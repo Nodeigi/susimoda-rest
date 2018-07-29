@@ -3,7 +3,9 @@
 	"version": "1.0.0",
 	"description": "Super simple movie database",
 	"scripts": {
-		"start": "node index.js"
+		"start": "npm run init-database; npm run migrate; node index.js",
+		"init-database": "node_modules/.bin/sequelize --config config/db.js --env main db:create",
+		"migrate": "node_modules/.bin/sequelize --config config/db.js --env main db:migrate"
 	},
 	"dependencies": {
 		"sequelize": "^4.38.0",
